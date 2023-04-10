@@ -30,10 +30,20 @@ const useContacts = () => {
   }, [contacts]);
 
   const addContact = ({ name, number }) => {
+    if (!name || !number) {
+      alert('Please provide both name and number');
+      return;
+    }
+
     const isNameExist = contacts.some(contact => contact.name === name);
+    const isNumberExist = contacts.some(contact => contact.number === number);
 
     if (isNameExist) {
-      alert(`${name} is already in contacts`);
+      alert(`${name} is already in contacts!`);
+      return;
+    }
+    if (isNumberExist) {
+      alert(`${number} is already in contacts!`);
       return;
     }
 
