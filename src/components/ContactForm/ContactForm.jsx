@@ -1,11 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import css from '../ContactForm/ContactForm.module.css';
 
 function ContactForm({ onSubmit }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const nameInput = useRef(null);
 
   const handleNameChange = e => {
     setName(e.target.value);
@@ -20,7 +19,6 @@ function ContactForm({ onSubmit }) {
     onSubmit({ name, number });
     setName('');
     setNumber('');
-    nameInput.current.focus();
   };
 
   return (
@@ -33,7 +31,6 @@ function ContactForm({ onSubmit }) {
           name="name"
           value={name}
           onChange={handleNameChange}
-          ref={nameInput}
         />
       </label>
       <label className={css.labelsPhone}>
